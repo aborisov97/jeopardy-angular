@@ -1,0 +1,14 @@
+table {
+  background-color: blue;
+  width: 33rem;
+  height: 30rem;
+  font-size: large;
+  float: right;
+  margin-right: 8rem;
+}
+table, th, td {
+  border: 1px solid black;
+}
+td {
+  color: yellow;
+}

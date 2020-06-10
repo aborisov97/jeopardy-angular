@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/primeflex.css";
+
+.component-container {
+  background-color: #cff0ff;
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 14rem;
+}
+
+body {
+  background-color: #eeeeeec9;
+  margin: 0;
+  padding: 0;
+}
