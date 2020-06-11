@@ -12,3 +12,7 @@ table, th, td {
 td {
   color: yellow;
 }
+td:hover {
+  background-color: yellow;
+  color: black;
+}

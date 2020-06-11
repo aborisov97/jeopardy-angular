@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ThrowStmt } from '@angular/compiler';
+import { StateManagmentService } from 'src/app/shared/services/state-managment.service';
 
 @Component({
   selector: 'app-player-selection',
@@ -9,7 +10,9 @@ import { ThrowStmt } from '@angular/compiler';
 export class PlayerSelectionComponent implements OnInit {
   players: number;
   showError = false;
-  constructor() { }
+  constructor(
+    public stateManagmentService: StateManagmentService
+  ) { }
 
   ngOnInit() {
   }
@@ -19,8 +22,8 @@ export class PlayerSelectionComponent implements OnInit {
       this.showError = true;
     } else {
       this.showError = false;
+      this.stateManagmentService.playerCount.next(this.players);
     }
-    console.log(this.players);
   }
 
 }

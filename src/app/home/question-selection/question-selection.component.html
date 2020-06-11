@@ -1,5 +1,5 @@
 <div class="component-container">
-
+  <p>Selected category: {{selectedQuestion}}</p>
   <ul>
     <li *ngFor="let question of questions" (click)="submitQuestion(question)" class="question-list-item">{{question}}</li>
   </ul>

@@ -1,13 +1,18 @@
 <table class="table" *ngIf="!isSelectedQuestion">
     <tr *ngFor="let row of rows">
       <ng-container *ngFor="let question of questions; let i = index">
-        <td *ngIf="i < row && i >= row -4" (click)="showQuestionWindow(question)">{{question.answer}}</td>
+        <td *ngIf="i <= row && i >= row - 4" (click)="showQuestionWindow(question)">{{question.answer}}</td>
       </ng-container>
     </tr>
 </table>
-
 
 <app-question-window
   *ngIf="isSelectedQuestion"
   [selectedQuestion]="selectedQuestion"
   (backEmmiter)="isSelectedQuestion = false"></app-question-window>
+
+<div>
+  <p *ngFor="let player of players; let i = index">{{player.playerNumber}}: {{player.score}}</p>
+</div>
+
+

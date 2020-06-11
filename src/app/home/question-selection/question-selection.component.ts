@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateManagmentService } from 'src/app/shared/services/state-managment.service';
 
 @Component({
   selector: 'app-question-selection',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionSelectionComponent implements OnInit {
   questions = ['Movies', 'Wheather', 'Education', 'Logistics'];
-  constructor() { }
+  selectedQuestion: string;
+  constructor(
+    public stateManagmentService: StateManagmentService
+  ) { }
 
   ngOnInit() {
   }
 
   submitQuestion(question) {
-    console.log(question);
+    this.selectedQuestion = question;
+    this.stateManagmentService.questionsCategory.next(question);
   }
 
 }

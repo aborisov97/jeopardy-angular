@@ -11,6 +11,7 @@ import { QuestionSelectionComponent } from './home/question-selection/question-s
 import { JeopardyComponent } from './home/jeopardy/jeopardy.component';
 import { QuestionWindowComponent } from './home/jeopardy/question-window/question-window.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
