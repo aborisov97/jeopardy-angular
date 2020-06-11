@@ -1,33 +1,13 @@
-<table class="table" *ngIf="!selectedQuestion">
-    <tr>
-      <td (click)="selectedQuestion = true">100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
-      <td>100</td>
+<table class="table" *ngIf="!isSelectedQuestion">
+    <tr *ngFor="let row of rows">
+      <ng-container *ngFor="let question of questions; let i = index">
+        <td *ngIf="i < row && i >= row -4" (click)="showQuestionWindow(question)">{{question.answer}}</td>
+      </ng-container>
     </tr>
 </table>
 
 
-<app-question-window *ngIf="selectedQuestion"></app-question-window>
+<app-question-window
+  *ngIf="isSelectedQuestion"
+  [selectedQuestion]="selectedQuestion"
+  (backEmmiter)="isSelectedQuestion = false"></app-question-window>

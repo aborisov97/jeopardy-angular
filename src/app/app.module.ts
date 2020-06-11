@@ -10,6 +10,7 @@ import { PlayerSelectionComponent } from './home/player-selection/player-selecti
 import { QuestionSelectionComponent } from './home/question-selection/question-selection.component';
 import { JeopardyComponent } from './home/jeopardy/jeopardy.component';
 import { QuestionWindowComponent } from './home/jeopardy/question-window/question-window.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { QuestionWindowComponent } from './home/jeopardy/question-window/questio
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-question-window',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-window.component.scss']
 })
 export class QuestionWindowComponent implements OnInit {
-
+  @Input() selectedQuestion;
+  @Output() backEmmiter: EventEmitter<boolean> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  back() {
+    this.backEmmiter.emit(true);
+  }
 }
