@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { StateManagmentService } from 'src/app/shared/services/state-managment.service';
 import { takeUntil } from 'rxjs/operators';
-import { browser } from 'protractor';
 
 @Component({
   selector: 'app-jeopardy',
@@ -16,6 +15,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   endRound = false;
   selectedQuestion: any;
   questions = [];
+  // for rendering the tables
   rows = [4, 9, 14, 19];
   players = [];
   playerNumber: number;
