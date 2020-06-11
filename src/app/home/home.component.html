@@ -3,7 +3,8 @@
     <div style="text-align: left; margin-bottom: 1rem;"><app-player-selection></app-player-selection></div>
     <div style="text-align: left; margin-bottom: 1rem;"><app-question-selection></app-question-selection></div>
     <div style="text-align: left;">
-      <button class="btn btn-primary" (click)="startGame()">START GAME</button>
+      <button *ngIf="!startedGame" class="btn btn-primary" (click)="startGame()">START GAME</button>
+      <p *ngIf="fillAllFields" class="text-danger">Fill all necessary fields!</p>
     </div>
   </div>
   <div class="p-col-8" style="text-align: right;">

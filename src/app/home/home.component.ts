@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   startedGame = false;
+  fillAllFields = false;
   playerCount: number;
   questionsCategory: string;
   destroyed$ = new Subject<boolean>();
@@ -38,6 +39,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       console.log('Home Component checking start game functionality -> READY!');
       this.stateManagmentService.startGame.next({playerCount: this.playerCount, questionsCategory: this.questionsCategory});
       this.startedGame = true;
+      this.fillAllFields = false;
+    } else {
+      this.fillAllFields = true;
     }
   }
 
