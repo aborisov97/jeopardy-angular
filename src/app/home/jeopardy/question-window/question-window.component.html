@@ -1,6 +1,11 @@
 <div class="question-window">
-  <p>question-window works!</p>
-  {{ selectedQuestion | json }}
+  <div class="question">
+    {{ selectedQuestion.question }}
+  </div>
 
+  <div class="answer">
+    <input type="text" class="form-control" [(ngModel)]="answer">
+  </div>
+  <button class="btn btn-info" (click)="submitAnswer()">Submit</button>
   <button class="btn btn-info" (click)="back()">Back</button>
 </div>
