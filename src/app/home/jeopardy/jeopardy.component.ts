@@ -13,6 +13,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   destroyed$ = new Subject<boolean>();
   isSelectedQuestion = false;
   endRound = false;
+  round: 1 | 2 | 3;
   selectedQuestion: any;
   questions = [];
   // for rendering the tables
@@ -27,15 +28,9 @@ export class JeopardyComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     public stateManagmentService: StateManagmentService
   ) {
-
-    this.getJSON().subscribe(data => {
-      console.log(data);
-      this.questions = data;
-    });
-  }
-
-  public getJSON(): Observable<any> {
-   return this.http.get(this.jsonURL);
+    // to do - add round logic
+    this.round = 1;
+    this.loadRoundOneQuestions();
   }
 
   ngOnInit() {
@@ -47,6 +42,20 @@ export class JeopardyComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  loadRoundOneQuestions() {
+    // to do - add real BE call with real data
+    this.getJSON().subscribe(data => {
+      console.log(data);
+      this.questions = data;
+      this.checkForRoundEnd();
+    });
+  }
+
+  public getJSON(): Observable<any> {
+   return this.http.get(this.jsonURL);
+  }
+
 
   initPlayers() {
     for (let i = 0 ; i < this.playerNumber ; i++) {
@@ -87,6 +96,22 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         this.endRound = false;
       }
     });
+  }
+
+  nextRound() {
+    if (this.round !== 3) {
+      this.round++;
+    }
+    if (this.round === 2) {
+      // this.loadRoundTwoQuestions();
+      this.jsonURL = '../assets/data/questions_test2.json';
+      this.loadRoundOneQuestions();
+    } else {
+      // to do - add logic for round 2 and 3 quesitons
+      // this.loadRoundThreeQuestions();
+      this.jsonURL = '../assets/data/questions_test3.json';
+      this.loadRoundOneQuestions();
+    }
   }
 
   ngOnDestroy() {
