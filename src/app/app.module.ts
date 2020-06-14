@@ -12,6 +12,8 @@ import { JeopardyComponent } from './home/jeopardy/jeopardy.component';
 import { QuestionWindowComponent } from './home/jeopardy/question-window/question-window.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { CountdownModule } from 'ngx-countdown';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
