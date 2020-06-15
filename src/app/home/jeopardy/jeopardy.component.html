@@ -12,17 +12,19 @@
   [selectedQuestion]="selectedQuestion"
   (backEmmiter)="calculatePoints($event)"></app-question-window>
 
+<div class="naKikiVGuza">
+  <p class="naKikiKlasut">{{ round === 1 ? 'Jeopardy!' : round === 2 ? 'Double Jeopardy!' : 'Final Jeopardy!' }}</p>
+  <p>Current player: {{ currentPlayer }}</p>
+  <div>
+    <p *ngFor="let player of players; let i = index">{{player.playerNumber}}: {{player.score}}</p>
 
-<p>{{ round === 1 ? 'Jeopardy!' : round === 2 ? 'Double Jeopardy!' : 'Final Jeopardy!' }}</p>
-<p>Current player: {{ currentPlayer }}</p>
-<div>
-  <p *ngFor="let player of players; let i = index">{{player.playerNumber}}: {{player.score}}</p>
-
-  <ng-container *ngIf="endRound">
-    <p *ngIf="round === 3" class="text-danger">FINISH</p>
-    <p *ngIf="round !== 3" class="text-danger">END OF ROUND</p>
-    <button *ngIf="round !== 3" class="btn btn-info" (click)="nextRound()">NEXT ROUND</button>
-  </ng-container>
+    <ng-container *ngIf="endRound">
+      <p *ngIf="round === 3" class="text-danger">FINISH</p>
+      <p *ngIf="round !== 3" class="text-danger">END OF ROUND</p>
+      <button *ngIf="round !== 3" class="btn btn-info" (click)="nextRound()">NEXT ROUND</button>
+    </ng-container>
+  </div>
 </div>
+
 
 
