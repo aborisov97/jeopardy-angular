@@ -2,7 +2,7 @@
     <tr *ngFor="let row of rows">
       <ng-container *ngFor="let question of questions; let i = index">
         <td *ngIf="i <= row && i >= row - 4" (click)="showQuestionWindow(question)"
-           [ngClass]="question.value === 0 ? 'disabled-question' : 'active-question'">{{question.answer}}</td>
+           [ngClass]="question.value === 0 ? 'disabled question' : 'active question'">{{question.value}}</td>
       </ng-container>
     </tr>
 </table>
