@@ -81,7 +81,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
           this.players[i + 1].myTurn = true;
           this.currentPlayer = this.players[i + 1].playerNumber;
         }
-        this.selectedQuestion.value = 0;
+        this.selectedQuestion.answer = 'answered';
         break;
       }
     }
@@ -92,7 +92,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   checkForRoundEnd() {
     this.endRound = true;
     this.questions.forEach(question => {
-      if (question.value !== 0) {
+      if (question.answer !== 'answered') {
         this.endRound = false;
       }
     });

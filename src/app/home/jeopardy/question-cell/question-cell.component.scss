@@ -1,0 +1,19 @@
+span {
+  color: yellow;
+}
+
+.active:hover {
+  background-color: yellow;
+  color: black;
+}
+
+.question {
+  border: 8px solid black;
+  text-align: center;
+  font-size: 40px;
+  padding: 0.77rem;
+}
+.disabled {
+  pointer-events: none;
+  background-color: grey;
+}

@@ -13,6 +13,7 @@ import { QuestionWindowComponent } from './home/jeopardy/question-window/questio
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { CountdownModule } from 'ngx-countdown';
+import { QuestionCellComponent } from './home/jeopardy/question-cell/question-cell.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CountdownModule } from 'ngx-countdown';
     PlayerSelectionComponent,
     QuestionSelectionComponent,
     JeopardyComponent,
-    QuestionWindowComponent
+    QuestionWindowComponent,
+    QuestionCellComponent
   ],
   imports: [
     BrowserModule,
