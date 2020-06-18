@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -14,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { CountdownModule } from 'ngx-countdown';
 import { QuestionCellComponent } from './home/jeopardy/question-cell/question-cell.component';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -33,7 +37,9 @@ import { QuestionCellComponent } from './home/jeopardy/question-cell/question-ce
     FormsModule,
     HttpClientModule,
     SharedModule,
-    CountdownModule
+    CountdownModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyD0bbDR0F8YoafRuZkGgbVYF1xlhi29N8o',
+    authDomain: 'diplom-ar.firebaseapp.com',
+    databaseURL: 'https://diplom-ar.firebaseio.com',
+    projectId: 'diplom-ar',
+    storageBucket: 'diplom-ar.appspot.com',
+    messagingSenderId: '320932284587'
+  }
 };
 
 /*

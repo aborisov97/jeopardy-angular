@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, from } from 'rxjs';
 import { StateManagmentService } from 'src/app/shared/services/state-managment.service';
 import { takeUntil } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-jeopardy',
@@ -26,7 +27,8 @@ export class JeopardyComponent implements OnInit, OnDestroy {
 
   constructor(
     private http: HttpClient,
-    public stateManagmentService: StateManagmentService
+    public stateManagmentService: StateManagmentService,
+    private fire: AngularFirestore
   ) {
     // to do - add round logic
     this.round = 1;
@@ -39,6 +41,10 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         this.playerNumber = res.playerCount;
         this.questionsCategory = res.questionsCategory;
         this.initPlayers();
+        //
+        this.fire.collection('/questions', ref => ref.where('round', '==', 'Double Jeopardy!')).valueChanges().subscribe(res2 => {
+          console.log('FIREBASE -> ', res2);
+        });
       }
     });
   }
