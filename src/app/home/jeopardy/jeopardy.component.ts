@@ -42,8 +42,18 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         this.questionsCategory = res.questionsCategory;
         this.initPlayers();
         //
-        this.fire.collection('/questions', ref => ref.where('round', '==', 'Double Jeopardy!')).valueChanges().subscribe(res2 => {
+        this.fire.collection('/questions').valueChanges().subscribe(res2 => {
           console.log('FIREBASE -> ', res2);
+        });
+        this.fire.collection('/questions', ref => ref.where('category', '==', 'sport')).valueChanges().subscribe(res2 => {
+          console.log('QUERY -> ', res2);
+        });
+        this.fire.
+        collection('/questions', ref => ref
+        .where('category', '==', 'sport')
+        .where('round', '==', 'Double Jeopardy!'))
+        .valueChanges().subscribe(res2 => {
+          console.log('DOUBLE QUERY -> ', res2);
         });
       }
     });
