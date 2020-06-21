@@ -14,6 +14,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   destroyed$ = new Subject<boolean>();
   isSelectedQuestion = false;
   endRound = false;
+  endGame = false;
   round: 1 | 2 | 3;
   selectedQuestion: any;
   questions = [];
@@ -24,6 +25,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   questionsCategory: string;
   currentPlayer: string;
   private jsonURLFIREBASE = '../assets/data/my_questions.json';
+  winner: number;
 
   constructor(
     private http: HttpClient,
@@ -109,6 +111,24 @@ export class JeopardyComponent implements OnInit, OnDestroy {
     this.checkForRoundEnd();
   }
 
+  ENDGAME(event) {
+    for (let i = 0 ; i < this.players.length ; i++) {
+      if (event[i].correct) {
+        this.players[i].score += this.questions[0].value;
+      }
+    }
+    let maxScore = this.players[0].score;
+    this.winner = 1;
+    for (let i = 0 ; i < this.players.length ; i++) {
+      if (this.players[i].score > maxScore) {
+        maxScore = this.players[i].score;
+        this.winner = i + 1;
+      }
+    }
+    this.endRound = true;
+    this.endGame = true;
+  }
+
   checkForRoundEnd() {
     this.endRound = true;
     this.questions.forEach(question => {
@@ -144,6 +164,10 @@ export class JeopardyComponent implements OnInit, OnDestroy {
 
   public getJSONFIREBASE(): Observable<any> {
    return this.http.get(this.jsonURLFIREBASE);
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   ngOnDestroy() {

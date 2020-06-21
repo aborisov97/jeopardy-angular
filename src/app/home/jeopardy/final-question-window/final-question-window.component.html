@@ -1,2 +1,13 @@
-<p>final-question-window works!</p>
-<p>{{ finalQuestion | json }}</p>
+
+<div class="final-question-window">
+  <div class="question">
+    {{ question?.question }}
+  </div>
+
+  {{players}}
+  <div class="answer">
+    <input type="password" class="form-control" [(ngModel)]="currentPlayerAnswer">
+  </div>
+  <button class="btn btn-info" (click)="submitPlayerAnswer()">Submit</button>
+  <button [ngClass]="players > 0 ? 'disabled' : ''" class="btn btn-info" (click)="back()">FINISH</button>
+</div>

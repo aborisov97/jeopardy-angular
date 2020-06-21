@@ -13,8 +13,8 @@
   [selectedQuestion]="selectedQuestion"
   (backEmmiter)="calculatePoints($event)"></app-question-window>
 
-  <app-final-question-window *ngIf="round === 3" [finalQuestion]="questions[0]"
-  (backEmmiter)="calculatePoints($event)"></app-final-question-window>
+  <app-final-question-window *ngIf="round === 3" [finalQuestion]="questions[0]" [players]="playerNumber"
+  (backEmmiter)="ENDGAME($event)"></app-final-question-window>
 
 <div class="centeredField">
   <button class="btn btn-danger" (click)="uploadQuestionsInFireBase()">LOAD DATA</button>
@@ -24,7 +24,8 @@
     <p *ngFor="let player of players; let i = index">{{player.playerNumber}}: {{player.score}}</p>
 
     <ng-container *ngIf="endRound">
-      <p *ngIf="round === 3" class="text-danger">FINISH</p>
+      <h1 *ngIf="endGame">Winner is Player {{winner}}!</h1>
+      <button *ngIf="endGame" class="btn btn-danger" (click)="refresh()">PLAY AGAIN</button>
       <p *ngIf="round !== 3" class="text-danger">END OF ROUND</p>
       <button *ngIf="round !== 3" class="btn btn-info" (click)="nextRound()">NEXT ROUND</button>
     </ng-container>
