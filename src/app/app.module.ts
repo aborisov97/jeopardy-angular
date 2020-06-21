@@ -18,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
 import { CountdownModule } from 'ngx-countdown';
 import { QuestionCellComponent } from './home/jeopardy/question-cell/question-cell.component';
 import { environment } from 'src/environments/environment';
+import { FinalQuestionWindowComponent } from './home/jeopardy/final-question-window/final-question-window.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { environment } from 'src/environments/environment';
     QuestionSelectionComponent,
     JeopardyComponent,
     QuestionWindowComponent,
-    QuestionCellComponent
+    QuestionCellComponent,
+    FinalQuestionWindowComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,8 @@
   [selectedQuestion]="selectedQuestion"
   (backEmmiter)="calculatePoints($event)"></app-question-window>
 
-  <h1 *ngIf="round === 3">FINAL JEOPARDY</h1>
+  <app-final-question-window *ngIf="round === 3" [finalQuestion]="questions[0]"
+  (backEmmiter)="calculatePoints($event)"></app-final-question-window>
 
 <div class="centeredField">
   <button class="btn btn-danger" (click)="uploadQuestionsInFireBase()">LOAD DATA</button>
