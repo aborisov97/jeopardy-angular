@@ -18,21 +18,19 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   selectedQuestion: any;
   questions = [];
   // for rendering the tables
-  rows = [4, 9, 14, 19];
+  rows = [3, 7, 11, 15];
   players = [];
   playerNumber: number;
   questionsCategory: string;
   currentPlayer: string;
-  private jsonURL = '../assets/data/questions_test.json';
+  private jsonURLFIREBASE = '../assets/data/my_questions.json';
 
   constructor(
     private http: HttpClient,
     public stateManagmentService: StateManagmentService,
     private fire: AngularFirestore
   ) {
-    // to do - add round logic
     this.round = 1;
-    this.loadRoundOneQuestions();
   }
 
   ngOnInit() {
@@ -40,38 +38,44 @@ export class JeopardyComponent implements OnInit, OnDestroy {
       if (res) {
         this.playerNumber = res.playerCount;
         this.questionsCategory = res.questionsCategory;
+        this.loadRoundOneQuestions();
         this.initPlayers();
-        //
-        this.fire.collection('/questions').valueChanges().subscribe(res2 => {
-          console.log('FIREBASE -> ', res2);
-        });
-        this.fire.collection('/questions', ref => ref.where('category', '==', 'sport')).valueChanges().subscribe(res2 => {
-          console.log('QUERY -> ', res2);
-        });
-        this.fire.
-        collection('/questions', ref => ref
-        .where('category', '==', 'sport')
-        .where('round', '==', 'Double Jeopardy!'))
-        .valueChanges().subscribe(res2 => {
-          console.log('DOUBLE QUERY -> ', res2);
-        });
       }
     });
   }
 
   loadRoundOneQuestions() {
-    // to do - add real BE call with real data
-    this.getJSON().subscribe(data => {
-      console.log(data);
-      this.questions = data;
-      this.checkForRoundEnd();
+    this.fire.
+        collection('/questions', ref => ref
+        .where('category', '==', this.questionsCategory).where('round', '==', 'Jeopardy!'))
+        .valueChanges().subscribe(res2 => {
+          console.log(res2);
+          this.questions = res2;
+          this.checkForRoundEnd();
     });
   }
 
-  public getJSON(): Observable<any> {
-   return this.http.get(this.jsonURL);
+  loadRoundTwoQuestions() {
+    this.fire.
+        collection('/questions', ref => ref
+        .where('category', '==', this.questionsCategory).where('round', '==', 'Double Jeopardy!'))
+        .valueChanges().subscribe(res2 => {
+          console.log(res2);
+          this.questions = res2;
+          this.checkForRoundEnd();
+    });
   }
 
+  loadFinalJeopardy() {
+    this.fire.
+        collection('/questions', ref => ref
+        .where('category', '==', this.questionsCategory).where('round', '==', 'Final Jeopardy!'))
+        .valueChanges().subscribe(res2 => {
+          console.log(res2);
+          this.questions = res2;
+          this.checkForRoundEnd();
+    });
+  }
 
   initPlayers() {
     for (let i = 0 ; i < this.playerNumber ; i++) {
@@ -119,15 +123,27 @@ export class JeopardyComponent implements OnInit, OnDestroy {
       this.round++;
     }
     if (this.round === 2) {
-      // this.loadRoundTwoQuestions();
-      this.jsonURL = '../assets/data/questions_test2.json';
-      this.loadRoundOneQuestions();
+      this.loadRoundTwoQuestions();
     } else {
-      // to do - add logic for round 2 and 3 quesitons
-      // this.loadRoundThreeQuestions();
-      this.jsonURL = '../assets/data/questions_test3.json';
-      this.loadRoundOneQuestions();
+      // to do - add final jeopardy window component
+      this.loadFinalJeopardy();
     }
+  }
+
+  uploadQuestionsInFireBase() {
+    let id = 100;
+    this.getJSONFIREBASE().subscribe(data => {
+      data.forEach(question => {
+        this.fire.collection('/questions').doc(question.id).set(question).then(res2 => {
+          console.log('FIREBASEUploas -> ', res2);
+          id++;
+        });
+      });
+    });
+  }
+
+  public getJSONFIREBASE(): Observable<any> {
+   return this.http.get(this.jsonURLFIREBASE);
   }
 
   ngOnDestroy() {
