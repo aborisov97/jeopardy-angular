@@ -13,7 +13,7 @@
   [selectedQuestion]="selectedQuestion"
   (backEmmiter)="calculatePoints($event)"></app-question-window>
 
-  <app-final-question-window *ngIf="round === 3" [finalQuestion]="questions[0]" [players]="playerNumber"
+  <app-final-question-window *ngIf="round === 3" [finalQuestion]="questions[0]" [players]="players"
   (backEmmiter)="ENDGAME($event)"></app-final-question-window>
 
 <div class="centeredField">
@@ -21,7 +21,9 @@
   <p class="currentRoundName">{{ round === 1 ? 'Jeopardy!' : round === 2 ? 'Double Jeopardy!' : 'Final Jeopardy!' }}</p>
   <p>Current player: {{ currentPlayer }}</p>
   <div>
-    <p *ngFor="let player of players; let i = index">{{player.playerNumber}}: {{player.score}}</p>
+    <ng-container *ngFor="let player of players; let i = index">
+      <p>{{player.playerNumber}}: {{player.score}}</p>
+    </ng-container>
 
     <ng-container *ngIf="endRound">
       <h1 *ngIf="endGame">Winner is Player {{winner}}!</h1>

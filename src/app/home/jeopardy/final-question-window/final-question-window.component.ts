@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-final-question-window',
@@ -16,6 +17,11 @@ export class FinalQuestionWindowComponent implements OnInit {
   currentPlayerAnswer = '';
   playerCount = 1;
   answers = [];
+  playersLength: number;
+  wagerAmount: number;
+  // a bool variable to assign the players.lenght to the playersLength variable so playersLength can be decremented
+  // for the submitPlayerAnswer function
+  oneTimer = true;
 
   constructor() {
   }
@@ -24,11 +30,26 @@ export class FinalQuestionWindowComponent implements OnInit {
   }
 
   submitPlayerAnswer() {
-    if (this.players > 0) {
-      this.answers.push
-      ({correct: this.currentPlayerAnswer === this.question.answer, playerNumber: this.playerCount++});
-      this.players--;
-      this.currentPlayerAnswer = '';
+    if (this.oneTimer) {
+      this.playersLength = this.players.length;
+      console.log(this.playersLength);
+      // setup forever to false
+      this.oneTimer = false;
+    }
+    if (this.playersLength > 0) {
+      if (this.players[this.playerCount - 1].score < this.wagerAmount) {
+        alert('Wager must not be over the score');
+      } else {
+        this.answers.push(
+          {
+            correct: this.currentPlayerAnswer === this.question.answer,
+            playerNumber: this.playerCount++,
+            wager: this.wagerAmount
+          });
+        this.playersLength--;
+        this.currentPlayerAnswer = '';
+        this.wagerAmount = 0;
+      }
     }
     console.log(this.answers);
   }

@@ -32,6 +32,8 @@ export class JeopardyComponent implements OnInit, OnDestroy {
     public stateManagmentService: StateManagmentService,
     private fire: AngularFirestore
   ) {
+    // for testing
+    // this.round = 3;
     this.round = 1;
   }
 
@@ -42,6 +44,8 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         this.questionsCategory = res.questionsCategory;
         this.loadRoundOneQuestions();
         this.initPlayers();
+        // for testing
+        // this.nextRound();
       }
     });
   }
@@ -114,7 +118,10 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   ENDGAME(event) {
     for (let i = 0 ; i < this.players.length ; i++) {
       if (event[i].correct) {
-        this.players[i].score += this.questions[0].value;
+        this.players[i].score += this.questions[0].value + event[i].wager;
+      } else {
+        this.players[i].score -= event[i].wager;
+
       }
     }
     let maxScore = this.players[0].score;
