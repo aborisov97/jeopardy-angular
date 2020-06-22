@@ -49,6 +49,7 @@ export class FinalQuestionWindowComponent implements OnInit {
         this.playersLength--;
         this.currentPlayerAnswer = '';
         this.wagerAmount = 0;
+        this.playerCount > 3 ? this.playerCount = 3 : this.playerCount = this.playerCount;
       }
     }
     console.log(this.answers);

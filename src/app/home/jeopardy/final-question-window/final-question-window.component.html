@@ -6,9 +6,10 @@
 
   <div class="answer">
     <input type="password" class="form-control" [(ngModel)]="currentPlayerAnswer">
-    {{wagerAmount}}
+    <div class="wager">Spieler {{playerCount}}</div>
+    <div class="wager">Wette: {{wagerAmount}}</div>
     <input type="range" max="1000" [(ngModel)]="wagerAmount">
   </div>
-  <button class="btn btn-info" (click)="submitPlayerAnswer()">Submit</button>
-  <button [ngClass]="playersLength > 0 ? 'disabled' : ''" class="btn btn-info" (click)="back()">FINISH</button>
+  <button class="btn btn-info stayAway" (click)="submitPlayerAnswer()">Einreichen</button>
+  <button [ngClass]="playersLength > 0 ? 'disabled' : ''" class="btn btn-info" (click)="back()">Finale</button>
 </div>

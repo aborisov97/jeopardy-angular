@@ -6,8 +6,7 @@
   <div class="answer">
     <input type="text" class="form-control" [(ngModel)]="answer">
   </div>
-  <button class="btn btn-info" (click)="submitAnswer()">Submit</button>
-  <button class="btn btn-info" (click)="back()">Back</button>
+  <button class="btn btn-info" (click)="submitAnswer()">Einreichen</button>
 
-  <countdown #cd [config]="{leftTime: 10, format: 's'}" (event)="$event.action=='done' ? back() : ''"></countdown>
+  <countdown id="id3" #cd [config]="{leftTime: 1000, format: 's'}" (event)="$event.action=='done' ? back() : ''"></countdown>
 </div>

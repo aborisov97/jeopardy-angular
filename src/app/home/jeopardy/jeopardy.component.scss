@@ -1,13 +1,13 @@
 table {
   max-width: 40rem;
-  background-color: #2a3698;
+  background-color: #5562c7;
   height: 30rem;
   float: right;
   margin-right: -4rem;
 }
 
 tr {
-  border: 1px solid #2a3698;
+  border: 1px solid #5562c7;
 }
 
 .currentRoundName {
@@ -18,4 +18,18 @@ tr {
 
 .centeredField {
   text-align: center;
+}
+
+.currentPlayerParagraph {
+  font-size: 18px;
+}
+
+.playerListItem {
+  font-size: 18px;
+}
+
+.playerListItem:hover {
+  transform: translateY(-3px);
+  color: #79690f;
+  cursor: pointer;
 }

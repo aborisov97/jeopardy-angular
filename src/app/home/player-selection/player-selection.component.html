@@ -1,7 +1,7 @@
 <div class="component-container">
-    <label for="playerNumber">Number of Players</label>
+    <label for="playerNumber">Teilnehemernummer:</label>
     <input type="number" class="form-control" [(ngModel)]="players" style="margin-bottom: 0.5rem;">
-    <span *ngIf="showError"><p class="text-danger">Invalid number</p></span>
-    <button class="btn btn-primary" (click)="submitPlayers()" style="float: right;">Submit</button>
+    <span *ngIf="showError"><p class="text-danger">Inkorektes Nummer</p></span>
+    <button class="btn btn-primary" (click)="submitPlayers()" style="float: right;">Einreichen</button>
     <div style="clear: both;"></div>
 </div>

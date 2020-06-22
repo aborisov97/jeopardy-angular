@@ -17,12 +17,12 @@
   (backEmmiter)="ENDGAME($event)"></app-final-question-window>
 
 <div class="centeredField">
-  <button class="btn btn-danger" (click)="uploadQuestionsInFireBase()">LOAD DATA</button>
+  <!-- <button class="btn btn-danger" (click)="uploadQuestionsInFireBase()">LOAD DATA</button> -->
   <p class="currentRoundName">{{ round === 1 ? 'Jeopardy!' : round === 2 ? 'Double Jeopardy!' : 'Final Jeopardy!' }}</p>
-  <p>Current player: {{ currentPlayer }}</p>
+  <p class="currentPlayerParagraph">Aktueller Spieler: <span style="color: saddlebrown;">{{ currentPlayer }}</span></p>
   <div>
     <ng-container *ngFor="let player of players; let i = index">
-      <p>{{player.playerNumber}}: {{player.score}}</p>
+      <p class="playerListItem">{{player.playerNumber}}: {{player.score}}</p>
     </ng-container>
 
     <ng-container *ngIf="endRound">

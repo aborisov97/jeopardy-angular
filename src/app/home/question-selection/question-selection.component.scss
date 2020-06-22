@@ -1,6 +1,12 @@
+p {
+  font-size: 20px;
+}
+
+li {
+  font-size: 18px;
+}
 .question-list-item:hover {
   transform: translateY(-3px);
-  color: green;
+  color: #79690f;
   cursor: pointer;
-  // box-shadow: 0 4px 17px rgba(black, 0.35);
 }

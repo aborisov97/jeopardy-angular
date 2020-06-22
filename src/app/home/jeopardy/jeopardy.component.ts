@@ -33,8 +33,8 @@ export class JeopardyComponent implements OnInit, OnDestroy {
     private fire: AngularFirestore
   ) {
     // for testing
-    // this.round = 3;
-    this.round = 1;
+    this.round = 3;
+    // this.round = 1;
   }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         this.loadRoundOneQuestions();
         this.initPlayers();
         // for testing
-        // this.nextRound();
+        this.nextRound();
       }
     });
   }
@@ -85,7 +85,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
 
   initPlayers() {
     for (let i = 0 ; i < this.playerNumber ; i++) {
-      this.players.push({playerNumber: `Player ${i + 1}`, score: 0, myTurn: i === 0 ? true : false, winner: false});
+      this.players.push({playerNumber: `Spieler ${i + 1}`, score: 0, myTurn: i === 0 ? true : false, winner: false});
     }
     this.currentPlayer = this.players[0].playerNumber;
   }
@@ -118,10 +118,9 @@ export class JeopardyComponent implements OnInit, OnDestroy {
   ENDGAME(event) {
     for (let i = 0 ; i < this.players.length ; i++) {
       if (event[i].correct) {
-        this.players[i].score += this.questions[0].value + event[i].wager;
+        this.players[i].score += this.questions[0].value + event[i].wager ? event[i].wager : 0;
       } else {
-        this.players[i].score -= event[i].wager;
-
+        this.players[i].score -= event[i].wager ? event[i].wager : 0;
       }
     }
     let maxScore = this.players[0].score;
