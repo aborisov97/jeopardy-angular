@@ -9,6 +9,7 @@ export class QuestionWindowComponent implements OnInit {
   @Input() selectedQuestion;
   @Output() backEmmiter: EventEmitter<number> = new EventEmitter();
   answer: string;
+  windowIsActive = true;
   constructor() { }
 
   ngOnInit() {
@@ -18,7 +19,7 @@ export class QuestionWindowComponent implements OnInit {
     if (this.answer === this.selectedQuestion.answer) {
       this.backEmmiter.emit(this.selectedQuestion.value);
     } else {
-      this.backEmmiter.emit(0);
+      this.windowIsActive = false;
     }
   }
 

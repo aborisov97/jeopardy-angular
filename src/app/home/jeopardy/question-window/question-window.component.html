@@ -6,7 +6,14 @@
   <div class="answer">
     <input type="text" class="form-control" [(ngModel)]="answer">
   </div>
-  <button class="btn btn-info" (click)="submitAnswer()">Einreichen</button>
+  <button *ngIf="windowIsActive" class="btn btn-info" (click)="submitAnswer()">Einreichen</button>
 
-  <countdown id="id3" #cd [config]="{leftTime: 10, format: 's'}" (event)="$event.action=='done' ? back() : ''"></countdown>
+  <countdown *ngIf="windowIsActive" id="id3" #cd [config]="{leftTime: 10, format: 's'}" (event)="$event.action=='done' ? windowIsActive = false : ''"></countdown>
+
+  <hr>
+  <div *ngIf="!windowIsActive" class="right-answer">
+    Richtige Antwort:
+    {{ selectedQuestion.answer }}
+    <button class="btn btn-info" (click)="back()">Zurück</button>
+  </div>
 </div>
