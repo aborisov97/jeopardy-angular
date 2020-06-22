@@ -8,5 +8,5 @@
   </div>
   <button class="btn btn-info" (click)="submitAnswer()">Einreichen</button>
 
-  <countdown id="id3" #cd [config]="{leftTime: 1000, format: 's'}" (event)="$event.action=='done' ? back() : ''"></countdown>
+  <countdown id="id3" #cd [config]="{leftTime: 10, format: 's'}" (event)="$event.action=='done' ? back() : ''"></countdown>
 </div>

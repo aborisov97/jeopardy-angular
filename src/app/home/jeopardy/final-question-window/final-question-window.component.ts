@@ -47,6 +47,7 @@ export class FinalQuestionWindowComponent implements OnInit {
             wager: this.wagerAmount
           });
         this.playersLength--;
+        console.log('FINAL QUESTION COMPONETN hey im here -> ', this.playersLength);
         this.currentPlayerAnswer = '';
         this.wagerAmount = 0;
         this.playerCount > 3 ? this.playerCount = 3 : this.playerCount = this.playerCount;

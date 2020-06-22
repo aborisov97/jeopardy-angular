@@ -26,7 +26,7 @@
     </ng-container>
 
     <ng-container *ngIf="endRound">
-      <h1 *ngIf="endGame">Winner is Player {{winner}}!</h1>
+      <h1 *ngIf="endGame">Der Gewinner ist Spieler {{winner}}!</h1>
       <button *ngIf="endGame" class="btn btn-danger" (click)="refresh()">PLAY AGAIN</button>
       <p *ngIf="round !== 3" class="text-danger">END OF ROUND</p>
       <button *ngIf="round !== 3" class="btn btn-info" (click)="nextRound()">NEXT ROUND</button>

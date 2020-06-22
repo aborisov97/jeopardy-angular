@@ -33,8 +33,8 @@ export class JeopardyComponent implements OnInit, OnDestroy {
     private fire: AngularFirestore
   ) {
     // for testing
-    this.round = 3;
-    // this.round = 1;
+    // this.round = 3;
+    this.round = 1;
   }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         this.loadRoundOneQuestions();
         this.initPlayers();
         // for testing
-        this.nextRound();
+        // this.nextRound();
       }
     });
   }
