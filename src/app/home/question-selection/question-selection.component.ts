@@ -7,7 +7,7 @@ import { StateManagmentService } from 'src/app/shared/services/state-managment.s
   styleUrls: ['./question-selection.component.scss']
 })
 export class QuestionSelectionComponent implements OnInit {
-  questions = ['Deutschland', 'Sport', 'Natur'];
+  questions = ['Deutschland', 'Sport', 'Kino'];
   selectedQuestion: string;
   constructor(
     public stateManagmentService: StateManagmentService
