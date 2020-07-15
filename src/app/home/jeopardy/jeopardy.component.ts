@@ -55,7 +55,6 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         collection('/questions', ref => ref
         .where('category', '==', this.questionsCategory).where('round', '==', 'Jeopardy!'))
         .valueChanges().subscribe(res2 => {
-          console.log(res2);
           this.questions = res2;
           this.checkForRoundEnd();
     });
@@ -131,6 +130,7 @@ export class JeopardyComponent implements OnInit, OnDestroy {
         this.winner = i + 1;
       }
     }
+
     this.endRound = true;
     this.endGame = true;
   }
