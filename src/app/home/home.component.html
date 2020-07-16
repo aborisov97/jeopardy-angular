@@ -3,11 +3,11 @@
     <div style="text-align: left; margin-bottom: 1rem;"><app-player-selection></app-player-selection></div>
     <div style="text-align: left; margin-bottom: 1rem;"><app-question-selection></app-question-selection></div>
     <div style="text-align: left;">
-      <button *ngIf="!startedGame" class="btn btn-primary" (click)="startGame()">SPIEL STARTEN</button>
+      <button id="startGameButton" *ngIf="!startedGame" class="btn btn-primary" (click)="startGame()">SPIEL STARTEN</button>
       <p *ngIf="fillAllFields" class="text-danger">Geben Sie bitte alle Felden an!</p>
     </div>
   </div>
   <div class="p-col-8" style="text-align: right;">
-    <app-jeopardy *ngIf="startedGame"></app-jeopardy>
+    <app-jeopardy id="jeopardyWindow" *ngIf="startedGame"></app-jeopardy>
   </div>
 </div>

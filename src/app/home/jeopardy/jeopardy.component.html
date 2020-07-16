@@ -2,7 +2,7 @@
     <tr *ngFor="let row of rows">
       <ng-container *ngFor="let question of questions; let i = index">
         <td *ngIf="i <= row && i >= row - 3">
-          <app-question-cell [question]="question" (clicked)="showQuestionWindow($event)"></app-question-cell>
+          <app-question-cell id="questionCell{{i+1}}" [question]="question" (clicked)="showQuestionWindow($event)"></app-question-cell>
         </td>
       </ng-container>
     </tr>
@@ -22,7 +22,7 @@
   <p class="currentPlayerParagraph">Aktueller Spieler: <span style="color: saddlebrown;">{{ currentPlayer }}</span></p>
   <div>
     <ng-container *ngFor="let player of players; let i = index">
-      <p class="playerListItem">{{player.playerNumber}}: {{player.score}}</p>
+      <p id="playerListItem{{i+1}}" class="playerListItem">{{player.playerNumber}}: {{player.score}}</p>
     </ng-container>
 
     <ng-container *ngIf="endRound">
